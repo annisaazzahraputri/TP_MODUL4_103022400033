@@ -23,11 +23,36 @@ class KodePos
     }
 }
 
+class DoorMachine
+{
+    enum State { Terkunci, Terbuka }
+
+    private State currentState = State.Terkunci;
+
+    public void BukaPintu()
+    {
+        if (currentState == State.Terkunci)
+        {
+            currentState = State.Terbuka;
+            Console.WriteLine("Pintu tidak terkunci");
+        }
+        else
+        {
+            currentState = State.Terkunci;
+            Console.WriteLine("Pintu terkunci");
+        }
+    }
+}
+
 class Program
 {
     static void Main()
     {
         KodePos kp = new KodePos();
         Console.WriteLine("Kode Pos Batununggal: " + kp.getKodePos("Batununggal"));
+
+        DoorMachine door = new DoorMachine();
+        door.BukaPintu();
+        door.BukaPintu();
     }
 }
